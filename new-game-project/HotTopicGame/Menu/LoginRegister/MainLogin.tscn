@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2be8v8vfwbed"]
+
+[ext_resource type="Script" uid="uid://b4x2y15vwkvwv" path="res://HotTopicGame/Menu/LoginRegister/mainLogin.gd" id="1_1jw87"]
+[ext_resource type="PackedScene" uid="uid://dgh3ivnqtm6md" path="res://HotTopicGame/Menu/Main/Bg.tscn" id="2_6umie"]
+[ext_resource type="Script" uid="uid://dlgim0v5p7205" path="res://addons/NotificationSchedulerPlugin/NotificationScheduler.gd" id="5_w7rcj"]
+[ext_resource type="PackedScene" uid="uid://dfd7j3e0fhhhb" path="res://HotTopicGame/Menu/LoginRegister/LoginBtn.tscn" id="5_y115j"]
+[ext_resource type="PackedScene" uid="uid://bra3mjww2g7lv" path="res://HotTopicGame/Menu/LoginRegister/RegisterBtn.tscn" id="6_e7cn2"]
+
+[node name="Node" type="Node2D"]
+script = ExtResource("1_1jw87")
+
+[node name="CheckInitTimer" type="Timer" parent="."]
+
+[node name="NotificationScheduler" type="Node" parent="."]
+script = ExtResource("5_w7rcj")
+
+[node name="BG" parent="." instance=ExtResource("2_6umie")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -184.5
+offset_right = 214.5
+offset_bottom = 184.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoginBtn" parent="CanvasLayer/VBoxContainer" instance=ExtResource("5_y115j")]
+layout_mode = 2
+
+[node name="RegisterBtn" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_e7cn2")]
+layout_mode = 2
+
+[connection signal="timeout" from="CheckInitTimer" to="." method="_on_CheckInitTimer_timeout"]
+[connection signal="initialization_completed" from="NotificationScheduler" to="." method="initialization_completed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/LoginBtn" to="." method="_on_login_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/RegisterBtn" to="." method="_on_register_btn_pressed"]

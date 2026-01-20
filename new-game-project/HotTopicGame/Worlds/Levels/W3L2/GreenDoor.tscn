@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=4 uid="uid://irp0ty1jmipv"]
+
+[ext_resource type="TileSet" uid="uid://b4at813jwo5q7" path="res://HotTopicGame/Tilemap.tres" id="1_gm41c"]
+
+[node name="GreenDoor" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAPz/AABQACQAAAAAAP3/AABQACUAAAAAAP7/AABQACYAAAAAAP//AABQACcAAAABAPz/AABRACQAAAABAP3/AABRACUAAAABAP7/AABRACYAAAABAP//AABRACcAAAACAPz/AABSACQAAAACAP3/AABSACUAAAACAP7/AABSACYAAAACAP//AABSACcAAAADAPz/AABTACQAAAADAP3/AABTACUAAAADAP7/AABTACYAAAADAP//AABTACcAAAA=")
+tile_set = ExtResource("1_gm41c")

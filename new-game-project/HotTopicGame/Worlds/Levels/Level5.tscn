@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=3 uid="uid://dqxm2fw2slrao"]
+
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_7bucd"]
+[ext_resource type="Texture2D" uid="uid://d0jdp8kinccyt" path="res://HotTopicGame/Backgrounds/Yellow.png" id="1_qthsf"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_mefcs"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="3_3pkyj"]
+[ext_resource type="PackedScene" uid="uid://k6osjwmpe65s" path="res://HotTopicGame/Worlds/Levels/W1L5/MovingVerticalSpikes.tscn" id="3_mefcs"]
+[ext_resource type="PackedScene" uid="uid://dlut1fidq6l2p" path="res://HotTopicGame/Worlds/Levels/W1L5/L5Ground.tscn" id="3_ta5dj"]
+[ext_resource type="Script" uid="uid://cnhfpuv5hpllk" path="res://HotTopicGame/Worlds/Levels/W1L5/MovingSpikeScriptB1.gd" id="4_ta5dj"]
+[ext_resource type="Script" uid="uid://c4hrt6e3t7ob5" path="res://HotTopicGame/Worlds/Levels/W1L2/player_trigger_area.gd" id="5_203gm"]
+[ext_resource type="Script" uid="uid://bf1losdu8rne0" path="res://HotTopicGame/Worlds/Levels/W1L5/MovingSpikeScriptB2.gd" id="6_o7asq"]
+[ext_resource type="Script" uid="uid://cl7hye2hsc5jo" path="res://HotTopicGame/Worlds/Levels/W1L5/MovingSpikeScriptB3.gd" id="7_7bucd"]
+[ext_resource type="PackedScene" uid="uid://dmobc0npq0gk3" path="res://HotTopicGame/Spike/SpikeSmall.tscn" id="10_3bqnm"]
+[ext_resource type="Script" uid="uid://c8jlg8pyubmur" path="res://HotTopicGame/Worlds/Levels/W1L5/HiddenSpike.gd" id="11_qthsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ta5dj"]
+size = Vector2(95.5, 109.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bucd"]
+size = Vector2(532, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_083as"]
+size = Vector2(32.25, 120)
+
+[node name="Level4" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+offset_left = -1223.0
+offset_top = -819.0
+offset_right = 3329.0
+offset_bottom = 936.0
+texture = ExtResource("1_qthsf")
+stretch_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_7bucd")]
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("2_mefcs")]
+position = Vector2(-72, 7)
+
+[node name="Door" parent="." instance=ExtResource("3_3pkyj")]
+position = Vector2(2456, -1)
+
+[node name="L4Ground" parent="." instance=ExtResource("3_ta5dj")]
+position = Vector2(696, 45)
+
+[node name="TriggerZoneB1" type="Area2D" parent="."]
+script = ExtResource("5_203gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZoneB1"]
+position = Vector2(351.75, -4.25)
+shape = SubResource("RectangleShape2D_ta5dj")
+
+[node name="TriggerZoneB2" type="Area2D" parent="."]
+script = ExtResource("5_203gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZoneB2"]
+position = Vector2(1546, -11)
+shape = SubResource("RectangleShape2D_7bucd")
+
+[node name="MovingVerticalSpikes" parent="." instance=ExtResource("3_mefcs")]
+position = Vector2(498, -102)
+script = ExtResource("4_ta5dj")
+
+[node name="MovingVerticalSpikes2" parent="." instance=ExtResource("3_mefcs")]
+z_index = -2
+position = Vector2(1177, -103)
+script = ExtResource("6_o7asq")
+
+[node name="MovingVerticalSpikes3" parent="." instance=ExtResource("3_mefcs")]
+position = Vector2(1881, -103)
+script = ExtResource("7_7bucd")
+
+[node name="SpikeSmall" parent="." instance=ExtResource("10_3bqnm")]
+z_index = -1
+position = Vector2(2260, 82)
+script = ExtResource("11_qthsf")
+
+[node name="HiddenSpikeTrigger" type="Area2D" parent="."]
+position = Vector2(2260, 82)
+script = ExtResource("5_203gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddenSpikeTrigger"]
+position = Vector2(-60.875, -93)
+shape = SubResource("RectangleShape2D_083as")

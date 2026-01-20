@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfd7j3e0fhhhb"]
+
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="1_sxqca"]
+[ext_resource type="FontFile" uid="uid://hg0q2vqo4acd" path="res://HotTopicGame/Assest/Others/Kenney Bold.ttf" id="2_4r3uw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r3uw"]
+atlas = ExtResource("1_sxqca")
+region = Rect2(629, 433, 429, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocdt1"]
+atlas = ExtResource("1_sxqca")
+region = Rect2(1085, 433, 426, 185)
+
+[node name="TextureButton" type="TextureButton"]
+offset_left = 424.0
+offset_top = 185.0
+offset_right = 853.0
+offset_bottom = 365.0
+texture_normal = SubResource("AtlasTexture_4r3uw")
+texture_pressed = SubResource("AtlasTexture_ocdt1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 26.0
+offset_right = 362.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("2_4r3uw")
+theme_override_font_sizes/font_size = 50
+text = "LOGIN
+"
+horizontal_alignment = 1
+vertical_alignment = 1

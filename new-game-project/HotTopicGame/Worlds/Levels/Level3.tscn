@@ -1,0 +1,72 @@
+[gd_scene load_steps=15 format=3 uid="uid://cdfupc3x782uy"]
+
+[ext_resource type="Texture2D" uid="uid://d0jdp8kinccyt" path="res://HotTopicGame/Backgrounds/Yellow.png" id="1_8oetm"]
+[ext_resource type="PackedScene" uid="uid://cuq2tkj23dccv" path="res://HotTopicGame/Worlds/Levels/W1L3/L3Ground.tscn" id="1_igw42"]
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_yrucs"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_jiloo"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="3_5q8fv"]
+[ext_resource type="PackedScene" uid="uid://cxdvok1aihemq" path="res://HotTopicGame/Worlds/Levels/W1L3/spike_pit_moving_ground.tscn" id="5_rdqkc"]
+[ext_resource type="PackedScene" uid="uid://dmobc0npq0gk3" path="res://HotTopicGame/Spike/SpikeSmall.tscn" id="5_u5kpd"]
+[ext_resource type="PackedScene" uid="uid://kfjbovx6oikp" path="res://HotTopicGame/Worlds/Levels/W1L3/HorizontalMovingWall.tscn" id="6_2pe2t"]
+[ext_resource type="Script" uid="uid://gkkolv5s4vpk" path="res://HotTopicGame/Worlds/Levels/W1L3/horizontal_moving_wall.gd" id="7_2pe2t"]
+[ext_resource type="Script" uid="uid://8ptw5sdrlx3" path="res://HotTopicGame/Worlds/Levels/W1L3/HorizontalMovingWallTriggerArea.gd" id="7_dmeac"]
+[ext_resource type="Script" uid="uid://eeiq3o8x4nl4" path="res://HotTopicGame/Worlds/Levels/W1L3/spike_pit_moving_ground.gd" id="9_kx6re"]
+[ext_resource type="Script" uid="uid://c20ay27g57r1e" path="res://HotTopicGame/Worlds/Levels/W1L3/spike_pit_moving_ground_trigger.gd" id="10_u5kpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6re"]
+size = Vector2(15, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oetm"]
+size = Vector2(7, 117)
+
+[node name="Level3" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -1472.0
+offset_top = -836.0
+offset_right = 2374.0
+offset_bottom = 919.0
+texture = ExtResource("1_8oetm")
+stretch_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("1_yrucs")]
+metadata/_edit_use_anchors_ = true
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("2_jiloo")]
+position = Vector2(-478, -33)
+
+[node name="Ground" parent="." instance=ExtResource("1_igw42")]
+position = Vector2(359, 4)
+
+[node name="Door" parent="." instance=ExtResource("3_5q8fv")]
+position = Vector2(821, -44)
+
+[node name="SpikeSmall" parent="." instance=ExtResource("5_u5kpd")]
+z_index = -2
+position = Vector2(9, 5)
+
+[node name="HorizontalMovingWall" parent="." instance=ExtResource("6_2pe2t")]
+z_index = -1
+position = Vector2(-488, 163)
+script = ExtResource("7_2pe2t")
+
+[node name="MovingWallTrigger" type="Area2D" parent="."]
+script = ExtResource("7_dmeac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingWallTrigger"]
+position = Vector2(-303, -68)
+shape = SubResource("RectangleShape2D_kx6re")
+
+[node name="SpikePitMovingGround" parent="." instance=ExtResource("5_rdqkc")]
+position = Vector2(632, 36)
+script = ExtResource("9_kx6re")
+
+[node name="SpikePitMovingGroundTrigger" type="Area2D" parent="."]
+script = ExtResource("10_u5kpd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikePitMovingGroundTrigger"]
+position = Vector2(566, -56)
+shape = SubResource("RectangleShape2D_8oetm")

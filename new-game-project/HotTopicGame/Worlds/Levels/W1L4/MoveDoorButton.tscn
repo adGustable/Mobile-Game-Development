@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp0rt3m1fqakg"]
+
+[ext_resource type="Texture2D" uid="uid://ccdy3img66d1c" path="res://HotTopicGame/ButtonTexture/UnPushedRedButton.png" id="1_m3l00"]
+[ext_resource type="Texture2D" uid="uid://cls0fu12dwjxp" path="res://HotTopicGame/ButtonTexture/PushedRedButton.png" id="2_capba"]
+[ext_resource type="Script" uid="uid://bnwpho0nyuwut" path="res://HotTopicGame/Worlds/Levels/W1L4/ButtonPushForDoor.gd" id="3_usxdd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55fa1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m3l00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_capba")
+}],
+"loop": false,
+"name": &"press",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxmjy"]
+
+[node name="MoveDoorButton" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_55fa1")
+animation = &"press"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_usxdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vxmjy")

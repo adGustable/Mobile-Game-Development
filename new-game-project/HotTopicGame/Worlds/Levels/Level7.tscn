@@ -1,0 +1,100 @@
+[gd_scene load_steps=20 format=3 uid="uid://f12h26n28fjg"]
+
+[ext_resource type="Texture2D" uid="uid://bf0o7ty4vxeq4" path="res://HotTopicGame/Backgrounds/Purple.png" id="1_tts7o"]
+[ext_resource type="PackedScene" uid="uid://blhqa7cow0ab3" path="res://HotTopicGame/Worlds/Levels/W2L2/GroundL7.tscn" id="2_nwap1"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_tts7o"]
+[ext_resource type="Script" uid="uid://xhxu46f57v8b" path="res://HotTopicGame/Worlds/Levels/W2L2/spin_sawMove.gd" id="3_5axtr"]
+[ext_resource type="PackedScene" uid="uid://cnehnrh55l1h4" path="res://HotTopicGame/Worlds/Levels/W2L1/move_ground.tscn" id="3_b2puu"]
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="3_nwap1"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="4_6oobq"]
+[ext_resource type="Script" uid="uid://bv4mku74iiwf8" path="res://HotTopicGame/Worlds/Levels/W2L2/move_ground2.gd" id="4_rutw1"]
+[ext_resource type="Script" uid="uid://sv7yvkpya8gc" path="res://HotTopicGame/Worlds/Levels/W2L2/spin_sawMoveFinal.gd" id="4_v4xu8"]
+[ext_resource type="PackedScene" uid="uid://cbu5yvv54623l" path="res://HotTopicGame/Worlds/Levels/W2L2/MovingPlatformVertical.tscn" id="6_nwap1"]
+[ext_resource type="Script" uid="uid://dqyo4k6s4jiu5" path="res://HotTopicGame/Worlds/Levels/W2L2/moving_platform_1.gd" id="7_6oobq"]
+[ext_resource type="Script" uid="uid://phdneaekcr7x" path="res://HotTopicGame/Worlds/Levels/W2L2/moving_platform_2.gd" id="8_qml24"]
+[ext_resource type="Script" uid="uid://bfl1nr03vnlwp" path="res://HotTopicGame/Worlds/Levels/W2L2/moving_platform_3.gd" id="9_efftn"]
+[ext_resource type="PackedScene" uid="uid://cr5qydyb46f0x" path="res://HotTopicGame/Spikeball/spin_saw.tscn" id="10_rlfnm"]
+[ext_resource type="Script" uid="uid://dmy6x5j66xq84" path="res://HotTopicGame/Worlds/Levels/W2L1/MoveSpin_saw.gd" id="11_b2puu"]
+[ext_resource type="PackedScene" uid="uid://crvuqir0ir7ob" path="res://HotTopicGame/Worlds/Levels/W2L2/trigger_move.tscn" id="14_rutw1"]
+[ext_resource type="Script" uid="uid://noftgrb2ffn1" path="res://HotTopicGame/Worlds/Levels/W2L2/trigger_saw.gd" id="15_gwljv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5axtr"]
+size = Vector2(12, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1q6"]
+size = Vector2(12, 132)
+
+[node name="Level7" type="Node"]
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -1248.0
+offset_top = -677.0
+offset_right = 4148.0
+offset_bottom = 1449.0
+texture = ExtResource("1_tts7o")
+stretch_mode = 1
+
+[node name="FirstSaw" parent="." instance=ExtResource("10_rlfnm")]
+position = Vector2(733, 428)
+script = ExtResource("3_5axtr")
+
+[node name="ThirdSaw" parent="." instance=ExtResource("10_rlfnm")]
+position = Vector2(3053, 429)
+script = ExtResource("4_v4xu8")
+
+[node name="GroundL7" parent="." instance=ExtResource("2_nwap1")]
+position = Vector2(31, 408)
+
+[node name="MoveGround" parent="." instance=ExtResource("3_b2puu")]
+position = Vector2(34, 523)
+script = ExtResource("4_rutw1")
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("2_tts7o")]
+position = Vector2(-115, 379)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_nwap1")]
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = -3.0
+
+[node name="Door" parent="." instance=ExtResource("4_6oobq")]
+position = Vector2(3158, 361)
+
+[node name="Platform1" parent="." instance=ExtResource("6_nwap1")]
+position = Vector2(1082, 466)
+script = ExtResource("7_6oobq")
+
+[node name="Platform2" parent="." instance=ExtResource("6_nwap1")]
+position = Vector2(1424, 466)
+script = ExtResource("8_qml24")
+
+[node name="Platform3" parent="." instance=ExtResource("6_nwap1")]
+position = Vector2(1759, 468)
+script = ExtResource("9_efftn")
+
+[node name="SpinSaw" parent="." instance=ExtResource("10_rlfnm")]
+position = Vector2(1993, 389)
+script = ExtResource("11_b2puu")
+
+[node name="TriggerMove" parent="." instance=ExtResource("14_rutw1")]
+position = Vector2(-8, 378)
+
+[node name="TriggerSaw" type="Area2D" parent="."]
+position = Vector2(582, 375)
+script = ExtResource("15_gwljv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerSaw"]
+position = Vector2(-5, -28.5)
+shape = SubResource("RectangleShape2D_5axtr")
+
+[node name="TriggerFinalSaw" type="Area2D" parent="."]
+position = Vector2(3008, 379)
+script = ExtResource("15_gwljv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerFinalSaw"]
+position = Vector2(0, -37)
+shape = SubResource("RectangleShape2D_ac1q6")

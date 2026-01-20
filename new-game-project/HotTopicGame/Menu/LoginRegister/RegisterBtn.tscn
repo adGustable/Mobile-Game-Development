@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bra3mjww2g7lv"]
+
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="1_phb74"]
+[ext_resource type="FontFile" uid="uid://hg0q2vqo4acd" path="res://HotTopicGame/Assest/Others/Kenney Bold.ttf" id="2_3lxgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n140"]
+atlas = ExtResource("1_phb74")
+region = Rect2(629, 433, 425, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erp5r"]
+atlas = ExtResource("1_phb74")
+region = Rect2(1085, 433, 426, 185)
+
+[node name="TextureButton" type="TextureButton"]
+offset_left = 425.0
+offset_top = 390.0
+offset_right = 465.0
+offset_bottom = 430.0
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_0n140")
+texture_pressed = SubResource("AtlasTexture_erp5r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 58.0
+offset_right = 408.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("2_3lxgi")
+theme_override_font_sizes/font_size = 50
+text = "REGISTER"

@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://y22b74jnpdkq"]
+
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="1_d03xk"]
+[ext_resource type="Script" uid="uid://b2nmwwjpdutbq" path="res://HotTopicGame/Menu/LevelSelect/level_box.gd" id="2_38xit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38xit"]
+atlas = ExtResource("1_d03xk")
+region = Rect2(759, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilhft"]
+atlas = ExtResource("1_d03xk")
+region = Rect2(969, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50y6f"]
+atlas = ExtResource("1_d03xk")
+region = Rect2(548, 668, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idn3s"]
+atlas = ExtResource("1_d03xk")
+region = Rect2(1389, 668, 182, 189)
+
+[node name="LevelBox" type="TextureButton"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 115.0
+offset_bottom = 123.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = SubResource("AtlasTexture_38xit")
+texture_pressed = SubResource("AtlasTexture_ilhft")
+texture_hover = SubResource("AtlasTexture_50y6f")
+texture_disabled = SubResource("AtlasTexture_idn3s")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_38xit")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0.5314, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="button_down" from="." to="." method="_on_pressed"]

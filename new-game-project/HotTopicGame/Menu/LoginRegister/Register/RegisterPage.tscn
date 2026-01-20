@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnnhpfyut6ny5"]
+
+[ext_resource type="Script" uid="uid://ueqqry8t2jr5" path="res://HotTopicGame/Menu/LoginRegister/Register/register_page.gd" id="1_njy1a"]
+[ext_resource type="Texture2D" uid="uid://csbwpk6edb34d" path="res://HotTopicGame/Backgrounds/BackgroundStars.PNG" id="2_72jhb"]
+[ext_resource type="Texture2D" uid="uid://cx5xbt1q0j7v2" path="res://HotTopicGame/Menu/Window.png" id="3_0jvj4"]
+[ext_resource type="FontFile" uid="uid://hg0q2vqo4acd" path="res://HotTopicGame/Assest/Others/Kenney Bold.ttf" id="4_2ifnp"]
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="5_secfo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u575m"]
+atlas = ExtResource("3_0jvj4")
+region = Rect2(1001, 2026, 769, 619)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adx47"]
+atlas = ExtResource("5_secfo")
+region = Rect2(2557, 1408, 181, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uokg"]
+atlas = ExtResource("5_secfo")
+region = Rect2(2761, 1408, 181, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsdlt"]
+atlas = ExtResource("5_secfo")
+region = Rect2(3297, 755, 181, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u5xy"]
+atlas = ExtResource("5_secfo")
+region = Rect2(3502, 755, 181, 189)
+
+[node name="Registerscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njy1a")
+
+[node name="BGTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.035
+anchor_top = -0.051
+anchor_right = 1.047
+anchor_bottom = 1.057
+offset_left = -0.200001
+offset_top = -0.279999
+offset_right = -0.160034
+offset_bottom = -0.0400391
+texture = ExtResource("2_72jhb")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BoardTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 45.0
+offset_right = 1028.0
+offset_bottom = 664.0
+texture = SubResource("AtlasTexture_u575m")
+
+[node name="UsernameLabel" type="Label" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 192.0
+offset_right = 324.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("4_2ifnp")
+theme_override_font_sizes/font_size = 25
+text = "Username"
+
+[node name="UsernameTextBox" type="LineEdit" parent="BoardTexture/UsernameLabel"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = -5.0
+offset_right = 500.0
+offset_bottom = 56.0
+
+[node name="PasswordLabel" type="Label" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 279.0
+offset_right = 331.0
+offset_bottom = 328.0
+theme_override_fonts/font = ExtResource("4_2ifnp")
+theme_override_font_sizes/font_size = 25
+text = "Password"
+
+[node name="PasswordTextBox" type="LineEdit" parent="BoardTexture/PasswordLabel"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = -6.0
+offset_right = 495.0
+offset_bottom = 53.0
+
+[node name="ConfirmPasswordLabel" type="Label" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 384.0
+offset_right = 336.0
+offset_bottom = 433.0
+theme_override_fonts/font = ExtResource("4_2ifnp")
+theme_override_font_sizes/font_size = 25
+text = "Confirm"
+
+[node name="ConfirmPasswordTextBox" type="LineEdit" parent="BoardTexture/ConfirmPasswordLabel"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = -6.0
+offset_right = 495.0
+offset_bottom = 53.0
+
+[node name="ExitButton" type="TextureButton" parent="BoardTexture"]
+layout_mode = 0
+offset_left = -212.0
+offset_top = 270.0
+offset_right = -31.0
+offset_bottom = 460.0
+texture_normal = SubResource("AtlasTexture_adx47")
+texture_pressed = SubResource("AtlasTexture_1uokg")
+
+[node name="RegisterButton" type="TextureButton" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 246.0
+offset_right = 977.0
+offset_bottom = 435.0
+texture_normal = SubResource("AtlasTexture_rsdlt")
+texture_pressed = SubResource("AtlasTexture_6u5xy")
+
+[connection signal="button_down" from="BoardTexture/ExitButton" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="BoardTexture/RegisterButton" to="." method="_on_register_button_down"]

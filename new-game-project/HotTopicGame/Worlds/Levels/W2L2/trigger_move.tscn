@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crvuqir0ir7ob"]
+
+[ext_resource type="Script" uid="uid://v3apkr6n2ebp" path="res://HotTopicGame/Worlds/Levels/W2L2/trigger_move.gd" id="1_4dmyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rutw1"]
+size = Vector2(14, 153)
+
+[node name="TriggerMove" type="Area2D"]
+script = ExtResource("1_4dmyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -46.5)
+shape = SubResource("RectangleShape2D_rutw1")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba7pmg70sy5xr"]
+
+[ext_resource type="Script" uid="uid://bmnrqhu21fam3" path="res://HotTopicGame/Menu/LoginRegister/Login/login.gd" id="1_bb4vk"]
+[ext_resource type="Texture2D" uid="uid://csbwpk6edb34d" path="res://HotTopicGame/Backgrounds/BackgroundStars.PNG" id="1_ou6qu"]
+[ext_resource type="Texture2D" uid="uid://cx5xbt1q0j7v2" path="res://HotTopicGame/Menu/Window.png" id="2_p0ujq"]
+[ext_resource type="FontFile" uid="uid://hg0q2vqo4acd" path="res://HotTopicGame/Assest/Others/Kenney Bold.ttf" id="3_bb4vk"]
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="4_w7yc0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s13r"]
+atlas = ExtResource("2_p0ujq")
+region = Rect2(1001, 2026, 769, 619)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb1qb"]
+atlas = ExtResource("4_w7yc0")
+region = Rect2(1344.5, 1408.49, 178, 182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb4vk"]
+atlas = ExtResource("4_w7yc0")
+region = Rect2(1548.19, 1408, 183, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7yc0"]
+atlas = ExtResource("4_w7yc0")
+region = Rect2(2554.17, 1406, 183, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwa8j"]
+atlas = ExtResource("4_w7yc0")
+region = Rect2(2758.2, 1405, 183, 185)
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bb4vk")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1290.0
+offset_bottom = 731.0
+texture = ExtResource("1_ou6qu")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BoardTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 49.0
+offset_right = 1045.0
+offset_bottom = 668.0
+texture = SubResource("AtlasTexture_3s13r")
+
+[node name="Login" type="Label" parent="BoardTexture"]
+z_index = 3
+layout_mode = 0
+offset_left = 205.0
+offset_top = 30.0
+offset_right = 572.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("3_bb4vk")
+theme_override_font_sizes/font_size = 50
+text = "LOGIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoginBtn" type="TextureButton" parent="BoardTexture"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 522.0
+offset_top = 348.0
+offset_right = 700.0
+offset_bottom = 530.0
+action_mode = 0
+texture_normal = SubResource("AtlasTexture_pb1qb")
+texture_pressed = SubResource("AtlasTexture_bb4vk")
+
+[node name="ExitBtn" type="TextureButton" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 346.0
+offset_right = 244.0
+offset_bottom = 530.0
+texture_normal = SubResource("AtlasTexture_w7yc0")
+texture_pressed = SubResource("AtlasTexture_kwa8j")
+
+[node name="UsernameLabel" type="Label" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 192.0
+offset_right = 324.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("3_bb4vk")
+theme_override_font_sizes/font_size = 25
+text = "Username"
+
+[node name="UsernameTextBox" type="LineEdit" parent="BoardTexture/UsernameLabel"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = -5.0
+offset_right = 500.0
+offset_bottom = 56.0
+
+[node name="PasswordLabel" type="Label" parent="BoardTexture"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 279.0
+offset_right = 331.0
+offset_bottom = 328.0
+theme_override_fonts/font = ExtResource("3_bb4vk")
+theme_override_font_sizes/font_size = 25
+text = "Password"
+
+[node name="PasswordTextBox" type="LineEdit" parent="BoardTexture/PasswordLabel"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = -6.0
+offset_right = 495.0
+offset_bottom = 53.0
+
+[connection signal="pressed" from="BoardTexture/LoginBtn" to="." method="_on_login_btn_pressed"]
+[connection signal="pressed" from="BoardTexture/ExitBtn" to="." method="_on_exit_btn_pressed"]

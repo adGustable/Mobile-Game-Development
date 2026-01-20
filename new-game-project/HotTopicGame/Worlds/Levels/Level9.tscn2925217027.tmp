@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://diq6sik8r5qsl"]
+
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_iv804"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="2_m3icd"]
+[ext_resource type="PackedScene" uid="uid://co54a1joucqqd" path="res://HotTopicGame/Worlds/Levels/W3L2/Ground.tscn" id="4_iv804"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="4_k8r24"]
+[ext_resource type="PackedScene" uid="uid://dmobc0npq0gk3" path="res://HotTopicGame/Spike/SpikeSmall.tscn" id="5_m3icd"]
+[ext_resource type="PackedScene" uid="uid://c4vjxa503iekh" path="res://HotTopicGame/FallingSpikeball/FallingSpikeball.tscn" id="6_acq8r"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" parent="CanvasLayer" instance=ExtResource("1_iv804")]
+metadata/_edit_use_anchors_ = true
+
+[node name="EndDoor" parent="." instance=ExtResource("2_m3icd")]
+position = Vector2(370, -43)
+
+[node name="PLAYERNODE" parent="." groups=["player"] instance=ExtResource("4_k8r24")]
+position = Vector2(-1306, -28)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("4_iv804")]
+position = Vector2(-1663, -92)
+
+[node name="SpikeSmall" parent="." instance=ExtResource("5_m3icd")]
+position = Vector2(-1119, 84)
+
+[node name="SpikeSmall2" parent="." instance=ExtResource("5_m3icd")]
+position = Vector2(-1006, -12)
+rotation = -1.5708
+
+[node name="SpikeSmall3" parent="." instance=ExtResource("5_m3icd")]
+position = Vector2(-1006, -76)
+rotation = -1.5708
+
+[node name="FallingSpikeball" parent="." instance=ExtResource("6_acq8r")]
+position = Vector2(-1428, -39)

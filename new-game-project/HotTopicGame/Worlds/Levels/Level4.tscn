@@ -1,0 +1,88 @@
+[gd_scene load_steps=18 format=3 uid="uid://dcm0ex744l57k"]
+
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_7bucd"]
+[ext_resource type="Script" uid="uid://dkyh1jpv0oiui" path="res://HotTopicGame/Worlds/Levels/W1L4/level_4.gd" id="1_083as"]
+[ext_resource type="Texture2D" uid="uid://d0jdp8kinccyt" path="res://HotTopicGame/Backgrounds/Yellow.png" id="1_qthsf"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_mefcs"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="3_3pkyj"]
+[ext_resource type="PackedScene" uid="uid://rku3tg4d0g28" path="res://HotTopicGame/Worlds/Levels/W1L4/L4Ground.tscn" id="3_ta5dj"]
+[ext_resource type="PackedScene" uid="uid://cdfuyaag145iw" path="res://HotTopicGame/Worlds/Levels/W1L4/RedDeathButton.tscn" id="4_ta5dj"]
+[ext_resource type="PackedScene" uid="uid://cbqedmpuug2y0" path="res://HotTopicGame/Worlds/Levels/W1L4/GreenButton.tscn" id="5_203gm"]
+[ext_resource type="PackedScene" uid="uid://dp0rt3m1fqakg" path="res://HotTopicGame/Worlds/Levels/W1L4/MoveDoorButton.tscn" id="6_o7asq"]
+[ext_resource type="Script" uid="uid://cmawyvmau1cdp" path="res://HotTopicGame/Worlds/Levels/W1L4/MakeDoorVisiblebutton.gd" id="7_o7asq"]
+[ext_resource type="PackedScene" uid="uid://dlqwqssxjb5xo" path="res://HotTopicGame/Worlds/Levels/W1L4/SpikeFloor.tscn" id="8_3pkyj"]
+[ext_resource type="PackedScene" uid="uid://d2sv6g5xqvnvn" path="res://HotTopicGame/Worlds/Levels/W1L4/SpikeFloorGreenButton.tscn" id="8_xjwy1"]
+[ext_resource type="Script" uid="uid://cdejnw8psude4" path="res://HotTopicGame/Worlds/Levels/W1L4/spike_floor.gd" id="9_xjwy1"]
+[ext_resource type="PackedScene" uid="uid://dmobc0npq0gk3" path="res://HotTopicGame/Spike/SpikeSmall.tscn" id="14_rp17a"]
+[ext_resource type="Script" uid="uid://c7hdxr5mbd3ej" path="res://HotTopicGame/Worlds/Levels/W1L4/L4HiddenSpike.gd" id="15_rieng"]
+[ext_resource type="Script" uid="uid://c4hrt6e3t7ob5" path="res://HotTopicGame/Worlds/Levels/W1L2/player_trigger_area.gd" id="16_8ybyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgvf8"]
+size = Vector2(21.5, 158.25)
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_083as")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -1472.0
+offset_top = -836.0
+offset_right = 2374.0
+offset_bottom = 919.0
+texture = ExtResource("1_qthsf")
+stretch_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_7bucd")]
+
+[node name="L4Ground" parent="." instance=ExtResource("3_ta5dj")]
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("2_mefcs")]
+position = Vector2(-234, -32)
+
+[node name="Door" parent="." instance=ExtResource("3_3pkyj")]
+visible = false
+position = Vector2(964, -48)
+
+[node name="RedDeathButton" parent="." instance=ExtResource("4_ta5dj")]
+z_index = -1
+position = Vector2(-108, -11)
+frame_progress = 0.62222
+
+[node name="GreenDeathButton" parent="." instance=ExtResource("5_203gm")]
+z_index = -2
+position = Vector2(106, -11)
+
+[node name="MoveDoorButton" parent="." instance=ExtResource("6_o7asq")]
+z_index = -2
+position = Vector2(310, -11)
+script = ExtResource("7_o7asq")
+
+[node name="SpikeFloorGreenButton" parent="." instance=ExtResource("8_xjwy1")]
+z_index = -1
+position = Vector2(539, -11)
+script = ExtResource("9_xjwy1")
+
+[node name="SpikeFloor" parent="." instance=ExtResource("8_3pkyj")]
+z_index = -1
+position = Vector2(-84, -76)
+
+[node name="SpikeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="SpikeSmall" parent="." instance=ExtResource("14_rp17a")]
+z_index = -1
+position = Vector2(835, 34)
+script = ExtResource("15_rieng")
+
+[node name="HiddenSpikeTriggerArea" type="Area2D" parent="."]
+position = Vector2(781, -82)
+script = ExtResource("16_8ybyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddenSpikeTriggerArea"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_pgvf8")
+
+[node name="HiddenSpikeTimer" type="Timer" parent="."]
+wait_time = 0.3

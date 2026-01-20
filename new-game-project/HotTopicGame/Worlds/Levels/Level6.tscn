@@ -1,0 +1,112 @@
+[gd_scene load_steps=22 format=3 uid="uid://doqk53qqc1oxt"]
+
+[ext_resource type="Texture2D" uid="uid://fgh2qms476vq" path="res://HotTopicGame/Worlds/Levels/W2L1/backgrounds/Purple.png" id="1_4a1mh"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_k0wuw"]
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="3_k6u3h"]
+[ext_resource type="PackedScene" uid="uid://dgiw1yeg3e37n" path="res://HotTopicGame/Worlds/Levels/W2L1/StaticGround.tscn" id="4_lo76w"]
+[ext_resource type="Script" uid="uid://dluck87vpdir6" path="res://HotTopicGame/Worlds/Levels/W2L1/Hidden_spin_saw.gd" id="5_7hfos"]
+[ext_resource type="PackedScene" uid="uid://cq3kv0qj1wcr0" path="res://HotTopicGame/Worlds/Levels/W2L1/MovingPlatform.tscn" id="5_ijuag"]
+[ext_resource type="Script" uid="uid://bii4hjobym0g5" path="res://HotTopicGame/Worlds/Levels/W2L1/moving_platform.gd" id="6_h3inb"]
+[ext_resource type="PackedScene" uid="uid://ccukl0urlq248" path="res://HotTopicGame/Worlds/Levels/W2L1/FakePlatform.tscn" id="7_p8lm7"]
+[ext_resource type="Script" uid="uid://c7hxo1in2hfxc" path="res://HotTopicGame/Worlds/Levels/W2L1/fake_platform.gd" id="8_7hfos"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="9_rg60q"]
+[ext_resource type="PackedScene" uid="uid://cr5qydyb46f0x" path="res://HotTopicGame/Spikeball/spin_saw.tscn" id="10_k0wuw"]
+[ext_resource type="Script" uid="uid://csoyrflexm0b" path="res://HotTopicGame/Worlds/Levels/W2L1/final_spin_saw.gd" id="11_baahj"]
+[ext_resource type="Script" uid="uid://dmy6x5j66xq84" path="res://HotTopicGame/Worlds/Levels/W2L1/MoveSpin_saw.gd" id="11_k6u3h"]
+[ext_resource type="Script" uid="uid://in0gkkpj51i7" path="res://HotTopicGame/Worlds/Levels/W2L1/trigger_fall.gd" id="12_h3inb"]
+[ext_resource type="PackedScene" uid="uid://cnehnrh55l1h4" path="res://HotTopicGame/Worlds/Levels/W2L1/move_ground.tscn" id="13_p8lm7"]
+[ext_resource type="Script" uid="uid://xxa78n3b14o1" path="res://HotTopicGame/Worlds/Levels/W2L1/move_ground.gd" id="14_7hfos"]
+[ext_resource type="Script" uid="uid://nh22uqclv5y2" path="res://HotTopicGame/Worlds/Levels/W2L1/trigger_hidden_spike.gd" id="15_p8lm7"]
+[ext_resource type="Script" uid="uid://dmrd1y003jawo" path="res://HotTopicGame/Worlds/Levels/W2L1/trigger_final.gd" id="17_rg60q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijuag"]
+size = Vector2(31, 231)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hfos"]
+size = Vector2(26, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baahj"]
+size = Vector2(11, 129)
+
+[node name="Level6" type="Node"]
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1344.0
+offset_top = -1059.0
+offset_right = 2878.0
+offset_bottom = 871.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_4a1mh")
+stretch_mode = 1
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("2_k0wuw")]
+position = Vector2(-267, 411)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_k6u3h")]
+offset_top = 2.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HiddenSpike" parent="." instance=ExtResource("10_k0wuw")]
+position = Vector2(429, 430)
+script = ExtResource("5_7hfos")
+
+[node name="FinalSpike" parent="." instance=ExtResource("10_k0wuw")]
+position = Vector2(3271, 429)
+script = ExtResource("11_baahj")
+
+[node name="StaticGround" parent="." instance=ExtResource("4_lo76w")]
+texture_filter = 1
+
+[node name="Platform1" parent="." instance=ExtResource("5_ijuag")]
+physics_interpolation_mode = 1
+position = Vector2(-16, 7)
+script = ExtResource("6_h3inb")
+
+[node name="Platform2" parent="." instance=ExtResource("7_p8lm7")]
+position = Vector2(19, -1)
+script = ExtResource("8_7hfos")
+
+[node name="Door" parent="." instance=ExtResource("9_rg60q")]
+position = Vector2(3260, 405)
+
+[node name="FirstSpinSaw" parent="." instance=ExtResource("10_k0wuw")]
+position = Vector2(-181, 426)
+script = ExtResource("11_k6u3h")
+
+[node name="TriggerFall" type="Area2D" parent="."]
+position = Vector2(-65, 0)
+script = ExtResource("12_h3inb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerFall"]
+position = Vector2(864.5, 334.5)
+shape = SubResource("RectangleShape2D_ijuag")
+
+[node name="MoveGround" parent="." instance=ExtResource("13_p8lm7")]
+position = Vector2(862, 563)
+script = ExtResource("14_7hfos")
+
+[node name="TriggerHiddenSpike" type="Area2D" parent="."]
+position = Vector2(433, 172)
+script = ExtResource("15_p8lm7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerHiddenSpike"]
+position = Vector2(10, -1)
+shape = SubResource("RectangleShape2D_7hfos")
+
+[node name="TriggerFinal" type="Area2D" parent="."]
+position = Vector2(3015, 382)
+script = ExtResource("17_rg60q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerFinal"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_baahj")

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://pu0on3dppmt8"]
+
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="1_3jiet"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="1_h7wjt"]
+[ext_resource type="Texture2D" uid="uid://d0jdp8kinccyt" path="res://HotTopicGame/Backgrounds/Yellow.png" id="1_i20ia"]
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_wk6rn"]
+[ext_resource type="PackedScene" uid="uid://dgmfaklp4lmu3" path="res://HotTopicGame/Worlds/Levels/W1L2/L2Ground.tscn" id="2_to7cc"]
+[ext_resource type="PackedScene" uid="uid://dhc23gqg4j1kk" path="res://HotTopicGame/Spike/SpikeLarge.tscn" id="3_bfvlr"]
+[ext_resource type="Script" uid="uid://bjh1t3nvxj208" path="res://HotTopicGame/Worlds/Levels/W1L2/MovingSpikes.gd" id="4_65hk6"]
+[ext_resource type="Script" uid="uid://c4hrt6e3t7ob5" path="res://HotTopicGame/Worlds/Levels/W1L2/player_trigger_area.gd" id="5_h7wjt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjiia"]
+size = Vector2(8.75, 120)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -1595.0
+offset_top = -770.0
+offset_right = 2957.0
+offset_bottom = 985.0
+texture = ExtResource("1_i20ia")
+stretch_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" parent="CanvasLayer" instance=ExtResource("1_wk6rn")]
+metadata/_edit_use_anchors_ = true
+
+[node name="EndDoor" parent="." instance=ExtResource("1_h7wjt")]
+position = Vector2(1104, -46)
+
+[node name="PLAYERNODE" parent="." instance=ExtResource("1_3jiet")]
+position = Vector2(-127, -34)
+
+[node name="L2Ground" parent="." instance=ExtResource("2_to7cc")]
+
+[node name="Spike" parent="." instance=ExtResource("3_bfvlr")]
+position = Vector2(816, 0)
+script = ExtResource("4_65hk6")
+
+[node name="MovingSpikeTriggerArea" type="Area2D" parent="."]
+position = Vector2(801, -91)
+script = ExtResource("5_h7wjt")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingSpikeTriggerArea"]
+position = Vector2(-3, -1)
+shape = SubResource("RectangleShape2D_jjiia")

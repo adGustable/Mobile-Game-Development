@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4vjxa503iekh"]
+
+[ext_resource type="Texture2D" uid="uid://b6aks45qhnlw" path="res://HotTopicGame/FallingSpikeball/Spiked Ball.png" id="1_enlvd"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_enlvd")

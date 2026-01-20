@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://ct62rrn03vakw"]
+
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="1_h8d8w"]
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_q6dmn"]
+[ext_resource type="Texture2D" uid="uid://d0jdp8kinccyt" path="res://HotTopicGame/Backgrounds/Yellow.png" id="1_tw536"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="2_gyu32"]
+[ext_resource type="PackedScene" uid="uid://5b22t0mjp7x" path="res://HotTopicGame/Worlds/Levels/W1L1/Ground.tscn" id="3_dpovy"]
+[ext_resource type="Script" uid="uid://bl2k84m1s8opy" path="res://HotTopicGame/Worlds/Levels/W1L1/MovingGround.gd" id="4_q6dmn"]
+[ext_resource type="PackedScene" uid="uid://bs5f3cun75ov3" path="res://HotTopicGame/Worlds/Levels/W1L1/MovingGround.tscn" id="5_gyu32"]
+[ext_resource type="Script" uid="uid://dqqwx4m8b1wid" path="res://HotTopicGame/Worlds/Levels/W1L1/MovingGroundTrigger.gd" id="5_jews6"]
+[ext_resource type="PackedScene" uid="uid://dcuwd0a0fr8np" path="res://HotTopicGame/Worlds/Levels/W1L1/SpikePit.tscn" id="6_aswdw"]
+[ext_resource type="PackedScene" uid="uid://dhc23gqg4j1kk" path="res://HotTopicGame/Spike/SpikeLarge.tscn" id="8_dpovy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcsq6"]
+size = Vector2(13, 83.5)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -2586.0
+offset_top = -808.0
+offset_right = 1966.0
+offset_bottom = 947.0
+texture = ExtResource("1_tw536")
+stretch_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" parent="CanvasLayer" instance=ExtResource("1_q6dmn")]
+metadata/_edit_use_anchors_ = true
+
+[node name="EndDoor" parent="." instance=ExtResource("1_h8d8w")]
+position = Vector2(370, -43)
+
+[node name="PLAYERNODE" parent="." groups=["player"] instance=ExtResource("2_gyu32")]
+position = Vector2(-1271, -31)
+
+[node name="Ground" parent="." instance=ExtResource("3_dpovy")]
+position = Vector2(-1668, -92)
+
+[node name="MovingGround" parent="." instance=ExtResource("5_gyu32")]
+position = Vector2(-372, -92)
+script = ExtResource("4_q6dmn")
+
+[node name="MovingGroundTrigger" type="Area2D" parent="." groups=["MovingGroundTrigger"]]
+position = Vector2(-167, -12)
+script = ExtResource("5_jews6")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingGroundTrigger"]
+position = Vector2(-0.5, -24.25)
+shape = SubResource("RectangleShape2D_dcsq6")
+
+[node name="SpikePit" parent="." instance=ExtResource("6_aswdw")]
+z_index = -1
+position = Vector2(-644, -28)
+
+[node name="Spike" parent="." instance=ExtResource("8_dpovy")]
+position = Vector2(-993, 2)
+
+[node name="Spike2" parent="." instance=ExtResource("8_dpovy")]
+position = Vector2(-501, 2)

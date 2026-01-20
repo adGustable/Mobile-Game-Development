@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbqedmpuug2y0"]
+
+[ext_resource type="Texture2D" uid="uid://cnga4aq4kwape" path="res://HotTopicGame/ButtonTexture/UnPushedGreenButton.png" id="1_tbfhl"]
+[ext_resource type="Texture2D" uid="uid://bewj5a5xk7tp6" path="res://HotTopicGame/ButtonTexture/PushedGreenButton.png" id="2_b0oku"]
+[ext_resource type="Script" uid="uid://c77o3mmmhwy6r" path="res://HotTopicGame/Worlds/Levels/W1L4/GreenButtonScript.gd" id="3_b0oku"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8py1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tbfhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b0oku")
+}],
+"loop": false,
+"name": &"press",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gttqw"]
+
+[node name="GreenButton" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8py1q")
+animation = &"press"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_b0oku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gttqw")

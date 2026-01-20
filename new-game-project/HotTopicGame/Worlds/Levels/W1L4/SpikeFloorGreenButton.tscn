@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2sv6g5xqvnvn"]
+
+[ext_resource type="Texture2D" uid="uid://cnga4aq4kwape" path="res://HotTopicGame/ButtonTexture/UnPushedGreenButton.png" id="1_vaue7"]
+[ext_resource type="Texture2D" uid="uid://bewj5a5xk7tp6" path="res://HotTopicGame/ButtonTexture/PushedGreenButton.png" id="2_kex34"]
+[ext_resource type="Script" uid="uid://bcl2snf7arjtl" path="res://HotTopicGame/Worlds/Levels/W1L4/SpikeFloorButtonAreaScript.gd" id="3_kex34"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iu5jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vaue7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kex34")
+}],
+"loop": false,
+"name": &"press",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmsi3"]
+
+[node name="SpikeFloorGreenButton" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_iu5jc")
+animation = &"press"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_kex34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jmsi3")

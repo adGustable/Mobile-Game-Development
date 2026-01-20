@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgqlqfpvu5rev"]
+
+[ext_resource type="PackedScene" uid="uid://bsthnx06mhtc8" path="res://HotTopicGame/Menu/Hud/Hud.tscn" id="1_s2lkw"]
+[ext_resource type="PackedScene" uid="uid://b8ru1gkoqsq1k" path="res://HotTopicGame/Door/Door.tscn" id="2_fvelr"]
+[ext_resource type="PackedScene" uid="uid://coddn801ny3fl" path="res://HotTopicGame/Player/player.tscn" id="3_l6xh4"]
+[ext_resource type="PackedScene" uid="uid://b74e5dcwsuqxn" path="res://HotTopicGame/Worlds/Levels/W3L1/Ground.tscn" id="9_s2lkw"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" parent="CanvasLayer" instance=ExtResource("1_s2lkw")]
+metadata/_edit_use_anchors_ = true
+
+[node name="EndDoor" parent="." instance=ExtResource("2_fvelr")]
+position = Vector2(370, -43)
+
+[node name="Ground" parent="." instance=ExtResource("9_s2lkw")]
+position = Vector2(-1663, -92)
+
+[node name="PLAYERNODE" parent="." groups=["player"] instance=ExtResource("3_l6xh4")]
+position = Vector2(-1306, -28)

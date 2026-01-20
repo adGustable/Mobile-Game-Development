@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlqwqssxjb5xo"]
+
+[ext_resource type="PackedScene" uid="uid://dmobc0npq0gk3" path="res://HotTopicGame/Spike/SpikeSmall.tscn" id="1_yjykb"]
+
+[node name="SpikeFloor" type="Node2D"]
+
+[node name="SpikeSmall2" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(-87, 111)
+
+[node name="SpikeSmall3" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(-26, 111)
+
+[node name="SpikeSmall4" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(36, 111)
+
+[node name="SpikeSmall5" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(97, 111)
+
+[node name="SpikeSmall6" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(159, 111)
+
+[node name="SpikeSmall7" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(220, 111)
+
+[node name="SpikeSmall8" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(280, 111)
+
+[node name="SpikeSmall9" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(340, 111)
+
+[node name="SpikeSmall10" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(400, 111)
+
+[node name="SpikeSmall11" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(460, 111)
+
+[node name="SpikeSmall12" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(523, 111)
+
+[node name="SpikeSmall13" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(584, 111)
+
+[node name="SpikeSmall14" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(646, 111)
+
+[node name="SpikeSmall15" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(707, 111)
+
+[node name="SpikeSmall16" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(769, 111)
+
+[node name="SpikeSmall17" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(830, 111)
+
+[node name="SpikeSmall18" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(890, 111)
+
+[node name="SpikeSmall19" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(950, 111)
+
+[node name="SpikeSmall20" parent="." instance=ExtResource("1_yjykb")]
+position = Vector2(1010, 111)

@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=3 uid="uid://coddn801ny3fl"]
+
+[ext_resource type="Texture2D" uid="uid://ccob7sybnpwl8" path="res://HotTopicGame/Player/playerGrey_up1.png" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://cqupdy5um36dl" path="res://HotTopicGame/Player/player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b8f4o2dfx2d6i" path="res://HotTopicGame/Player/playerGrey_up2.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://c6a2ou4g80a06" path="res://HotTopicGame/Player/playerGrey_walk1.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://b752htwitva2f" path="res://HotTopicGame/Player/playerGrey_walk2.png" id="4_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_3i0x1"]
+[ext_resource type="Script" uid="uid://gfaknb8wqrbw" path="res://HotTopicGame/Player/controls.gd" id="6_7iu5k"]
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="7_mj1pw"]
+[ext_resource type="Script" uid="uid://by022qqs523a7" path="res://FileManager.gd" id="9_wna3t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+radius = 23.0
+height = 58.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hqtel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iu5k"]
+atlas = ExtResource("7_mj1pw")
+region = Rect2(2148, 101, 181, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj1pw"]
+size = Vector2(200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wna3t"]
+atlas = ExtResource("7_mj1pw")
+region = Rect2(197, 2716, 181, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw2mx"]
+size = Vector2(200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m03nq"]
+atlas = ExtResource("7_mj1pw")
+region = Rect2(197, 2498, 181, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mewt"]
+size = Vector2(200, 200)
+
+[node name="PLAYERNODE" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(3, -4)
+script = ExtResource("1_sweqy")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-3, 4)
+shape = SubResource("CapsuleShape2D_hqtel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(-3, 4)
+scale = Vector2(0.421296, 0.421296)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"walk"
+frame_progress = 0.0427331
+
+[node name="Camera2D" type="Camera2D" parent="player/AnimatedSprite2D"]
+position = Vector2(0, 7.12088)
+scale = Vector2(-0.18373, 2)
+zoom = Vector2(0.85, 0.85)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.01
+drag_right_margin = 0.01
+drag_bottom_margin = 0.15
+
+[node name="Controls" type="Node2D" parent="."]
+script = ExtResource("6_7iu5k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Controls" groups=["ButtonContainer"]]
+
+[node name="Virtual Joystick" parent="Controls/CanvasLayer" instance=ExtResource("6_3i0x1")]
+offset_left = -3.0
+offset_top = -285.0
+offset_right = 297.0
+offset_bottom = 15.0
+
+[node name="JumpButton" type="TouchScreenButton" parent="Controls/CanvasLayer"]
+z_index = 5
+position = Vector2(1033, 521.774)
+scale = Vector2(1.07182, 0.798466)
+texture_normal = SubResource("AtlasTexture_7iu5k")
+shape = SubResource("RectangleShape2D_mj1pw")
+passby_press = true
+action = "ui_up"
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="TouchScreenButton" parent="Controls/CanvasLayer"]
+position = Vector2(0.999998, 510)
+scale = Vector2(0.718232, 0.730159)
+texture_normal = SubResource("AtlasTexture_wna3t")
+shape = SubResource("RectangleShape2D_uw2mx")
+
+[node name="Right" type="TouchScreenButton" parent="Controls/CanvasLayer"]
+position = Vector2(183, 512)
+scale = Vector2(0.718232, 0.687831)
+texture_normal = SubResource("AtlasTexture_m03nq")
+shape = SubResource("RectangleShape2D_2mewt")
+
+[node name="FileManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_wna3t")

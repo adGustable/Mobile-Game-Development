@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=4 uid="uid://cbu5yvv54623l"]
+
+[ext_resource type="TileSet" uid="uid://b4at813jwo5q7" path="res://HotTopicGame/Tilemap.tres" id="1_cw3c0"]
+
+[node name="StaticBody2D" type="AnimatableBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-5, -24)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD8////AAAcABAAAAD8/wAAAAAcABEAAAD8/wEAAAAcABIAAAD9////AAAdABAAAAD9/wAAAAAdABEAAAD9/wEAAAAdABIAAAD9/wIAAAAdABMAAAD+////AAAeABAAAAD+/wAAAAAeABEAAAD+/wEAAAAeABIAAAD+/wIAAAAeABMAAAD/////AAAfABAAAAD//wAAAAAfABEAAAD//wEAAAAfABIAAAD//wIAAAAfABMAAAAAAP//AAAgABAAAAAAAAAAAAAgABEAAAAAAAEAAAAgABIAAAAAAAIAAAAgABMAAAABAP//AAAhABAAAAABAAAAAAAhABEAAAABAAEAAAAhABIAAAABAAIAAAAhABMAAAACAP//AAAiABAAAAACAAAAAAAiABEAAAACAAEAAAAiABIAAAACAAIAAAAiABMAAAADAP//AAAjABAAAAADAAAAAAAjABEAAAADAAEAAAAjABIAAAA=")
+tile_set = ExtResource("1_cw3c0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-115, -56, 101, -56, 95, -6, 71, 44, 31, 61, -37, 59, -68, 47, -87, 25, -97, 0, -108, -9)

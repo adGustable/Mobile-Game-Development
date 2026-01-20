@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6arshqipwcf2"]
+
+[ext_resource type="Script" uid="uid://bas4ybvivvyd4" path="res://HotTopicGame/Menu/Settings/settings.gd" id="1_a842h"]
+[ext_resource type="Texture2D" uid="uid://hcibjcm6dcl3" path="res://HotTopicGame/Menu/LevelSelect/Button.png" id="1_xrk4y"]
+[ext_resource type="FontFile" uid="uid://hg0q2vqo4acd" path="res://HotTopicGame/Assest/Others/Kenney Bold.ttf" id="2_a842h"]
+[ext_resource type="Script" uid="uid://by022qqs523a7" path="res://FileManager.gd" id="4_iaxvm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaxvm"]
+atlas = ExtResource("1_xrk4y")
+region = Rect2(173, 433, 425, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrk4y"]
+atlas = ExtResource("1_xrk4y")
+region = Rect2(629, 433, 425, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a842h"]
+atlas = ExtResource("1_xrk4y")
+region = Rect2(1085, 433, 426, 189)
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_a842h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -215.0
+offset_top = 60.0
+offset_right = 215.0
+offset_bottom = 249.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_iaxvm")
+
+[node name="Label" type="Label" parent="CanvasLayer/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_right = 175.0
+offset_bottom = 142.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.025178, 0.53753, 0.801479, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_a842h")
+theme_override_font_sizes/font_size = 50
+text = "settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -98.5
+offset_right = 146.5
+offset_bottom = 236.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UseJoystick" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_xrk4y")
+texture_pressed = SubResource("AtlasTexture_a842h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/UseJoystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0.615686, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_a842h")
+theme_override_font_sizes/font_size = 20
+text = "use joystick"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_xrk4y")
+texture_pressed = SubResource("AtlasTexture_a842h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/Return"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0.615686, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_a842h")
+theme_override_font_sizes/font_size = 20
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FileManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_iaxvm")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Return" to="." method="_on_return_pressed"]

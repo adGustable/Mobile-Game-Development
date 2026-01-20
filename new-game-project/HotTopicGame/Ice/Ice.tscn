@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=4 uid="uid://bj07ncqrqurxq"]
+
+[ext_resource type="TileSet" uid="uid://b4at813jwo5q7" path="res://HotTopicGame/Tilemap.tres" id="1_p2cb5"]
+
+[node name="Ice" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAABwAAAAAAAEAAAAAAB0AAAAAAAIAAAAAAB4AAAAAAAMAAAAAAB8AAAABAAAAAAABABwAAAABAAEAAAABAB0AAAABAAIAAAABAB4AAAABAAMAAAABAB8AAAACAAAAAAACABwAAAACAAEAAAACAB0AAAACAAIAAAACAB4AAAACAAMAAAACAB8AAAADAAAAAAADABwAAAADAAEAAAADAB0AAAADAAIAAAADAB4AAAADAAMAAAADAB8AAAA=")
+tile_set = ExtResource("1_p2cb5")
