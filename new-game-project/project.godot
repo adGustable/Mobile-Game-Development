@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Traps"
 run/main_scene="uid://dn0x4u3o2blor"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://hqrq6hmdgq4y"
 config/icon="uid://dkkwpfxi8dm1l"
